@@ -1,11 +1,10 @@
-from dotenv import load_dotenv
 from langchain_groq.chat_models import ChatGroq
 from openai import AuthenticationError
 from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate
-import os
 import time
+import streamlit as st
 from prompt import prompt_for_sentiment_analysis
-load_dotenv()
+
 
 class SentimentAnalyserBot:
     def __init__(self):
@@ -20,7 +19,7 @@ class SentimentAnalyserBot:
             input_variables=["user_text"]
         )
         self.llm = ChatGroq(
-            api_key=os.getenv('GROQ_API_KEY'),
+            api_key=st.secrets['GROQ_API_KEY'],
             model="llama3-70b-8192",
             temperature=0,
             max_retries=2,
