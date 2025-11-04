@@ -29,7 +29,7 @@ class SentimentAnalyserBot:
         )
         self.llm = ChatGroq(
             api_key=st.secrets['GROQ_API_KEY'],
-            model="llama3-70b-8192",
+            model="llama-3.3-70b-versatile",
             temperature=0,
             max_retries=2,
             streaming=True,
